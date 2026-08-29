@@ -1,0 +1,106 @@
+{
+  "name": "AZIZ ULLAH KHAN",
+  "age": 30,
+  "title": "Typing Specialist & Administrative Professional",
+  "subTitle": "Government Portals (MOHRE, ICP, TAMM, MOI) | Accountant & Digital Designer",
+  "address": "Musaffah 38, Abu Dhabi, UAE",
+  "phone": "+971 56 179 4180",
+  "email": "azizullahkhan6@outlook.com",
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science (BSCS)",
+      "institution": "University of Swat",
+      "location": "Pakistan",
+      "year": "2018"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Written & Spoken", "badge": "Fluent" },
+    { "name": "Urdu", "level": "Written & Spoken", "badge": "Native / Fluent" },
+    { "name": "Pashto", "level": "Written & Spoken", "badge": "Native" },
+    { "name": "Arabic", "level": "Interested / Basic Learning", "badge": "Beginner" }
+  ],
+  "summary": "Typing Specialist and Administrative Professional with 10+ years of UAE and Pakistan experience in government portals (MOHRE, ICP, TAMM, MOI), financial recordkeeping, and digital design. Adept at handling complex government documentation, bookkeeping, website management, and office operations with speed and precision.",
+  "experience": [
+    {
+      "company": "Blue Watch Transport & General Contracting",
+      "period": "01/08/2024 To Present",
+      "location": "Musaffah M17, Abu Dhabi, UAE",
+      "role": "Typist & Computer Operator",
+      "highlights": [
+        "Managing end-to-end MOHRE work permits, labor applications, and quota approvals.",
+        "Processing ICP (Immigration) visa entries, residency extensions, and Emirates ID applications.",
+        "Executing TAMM & MOI government portal services for corporate vehicle and business permits.",
+        "Directing general administrative workflow and client document processing."
+      ]
+    },
+    {
+      "company": "Travels for Typing Services LLC",
+      "period": "02/07/2023 To 30/04/2024",
+      "location": "Musaffah M40, Abu Dhabi, UAE",
+      "role": "Typist & Computer Operator",
+      "highlights": [
+        "Specialized in high-volume government visa typing across MOHRE and ICP systems.",
+        "Ensured 100% compliance with UAE labor rules and document verification procedures.",
+        "Handled customer inquiries, fine clearings, and TAMM smart service applications."
+      ]
+    },
+    {
+      "company": "Al Zareena Cargo LLC",
+      "period": "01/07/2022 To 29/06/2023",
+      "location": "International City, Dubai, UAE",
+      "role": "Accountant & Online Marketing",
+      "highlights": [
+        "Managed complete financial records, daily general ledger entries, and supplier balances.",
+        "Generated client invoices, quotes, and prepared quarterly operating budgets.",
+        "Created and managed corporate website, driving search engine optimization (SEO) and online leads."
+      ]
+    },
+    {
+      "company": "SHAZZ Super Market",
+      "period": "01/2020 To 04/2022",
+      "location": "Karachi, Pakistan",
+      "role": "Accountant Officer",
+      "highlights": [
+        "Oversaw Accounts Payable, daily cash reconciliations, and cheque payments.",
+        "Maintained comprehensive vendor account ledgers and inventory valuation reports."
+      ]
+    },
+    {
+      "company": "INFINITLY Peshawar LLC",
+      "period": "02/2018 To 03/2019",
+      "location": "Peshawar, Pakistan",
+      "role": "Graphics Designer & Video Animator",
+      "highlights": [
+        "Designed visual identity materials, brand logos, promotional banners, and commercial print assets.",
+        "Edited marketing video animations for client campaigns."
+      ]
+    },
+    {
+      "company": "Stylish Photographer & Printing Press",
+      "period": "2013 To 2017",
+      "location": "Jowar, Buner, Pakistan",
+      "role": "Graphics Designer & Computer Operator",
+      "highlights": [
+        "Operated commercial printing machinery and composed press layouts.",
+        "Delivered photo editing, graphic composition, and administrative services."
+      ]
+    }
+  ],
+  "skillCategories": {
+    "Government Typing & Portals": ["MOHRE", "ICP (Immigration)", "TAMM Abu Dhabi", "MOI Services", "DAMAN Health Insurance"],
+    "Accounting & Software": ["QuickBooks", "Techno Sys", "Fourgen", "Microsoft Office (Excel/Word/PowerPoint)", "Financial Invoicing", "Budgeting"],
+    "Design & Media": ["Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "Adobe Premiere Pro", "CorelDraw", "AutoCAD"],
+    "Digital Marketing & Web": ["Website Management", "SEO (Search Engine Optimization)", "GEO & AEO", "Google Ads", "Facebook Ads"]
+  },
+  "portfolioWebsites": [
+    { "name": "Antique Echoes", "url": "https://antiqueechoes.com/", "type": "Personal", "category": "E-Commerce / Antique Showcase & Blog" },
+    { "name": "Chiller Van UAE", "url": "http://chillervanuae.com/", "type": "Personal", "category": "Refrigerated Transport Services" },
+    { "name": "Mover Star Express", "url": "https://moverstarexpress.com/", "type": "Client", "category": "Relocation & Logistics Services" },
+    { "name": "Global Chiller Van", "url": "https://globalchillervan.com/", "type": "Client", "category": "Cold Storage & Transport Rental" },
+    { "name": "Al Zareena Chiller Van (.ae)", "url": "https://alzareenachillervan.ae/", "type": "Client", "category": "Logistics & Chiller Van UAE" },
+    { "name": "Al Zareena Chiller Van (.com)", "url": "https://alzareenachillervan.com/", "type": "Client", "category": "Cold Chain Logistics Services" },
+    { "name": "Waseem Car Lift", "url": "https://waseemcarleft.com/", "type": "Client", "category": "Passenger Transport & Car Lift" },
+    { "name": "Blue Watch Groups", "url": "https://bluewatchgroups.ae/", "type": "Client", "category": "Contracting & Group Corporate Services" }
+  ]
+}
