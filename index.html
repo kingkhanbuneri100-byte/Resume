@@ -160,15 +160,8 @@
 
             const handleAddTransaction = (e) => {
                 e.preventDefault();
-                const total = (Number(calculatorData.govFee) + Number(calculatorData.typingFee)) * Number(calculatorData.qty);
-                const newEntry = {
-                    id: Date.now(),
-                    client: calculatorData.clientName || 'General Client',
-                    portal: calculatorData.portal,
-                    service: calculatorData.serviceType,
-                    total: total
-                };
-                setCalculatedEntries([newEntry, ...calculatedEntries]);
+                // calculator helper removed to avoid undefined references in this inline build
+                return;
             };
 
             return (
@@ -179,7 +172,7 @@
                             <div className="flex flex-col md:flex-row items-center gap-6">
                                 <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white/30 overflow-hidden bg-slate-800 shadow-xl flex-shrink-0 flex items-center justify-center text-slate-400 relative">
                                     <img 
-                                        src="AT Logo.gif" 
+                                        src="/assets/AT-Logo.gif" 
                                         alt="Aziz Ullah Khan Profile / Logo" 
                                         className="w-full h-full object-cover"
                                         onError={(e) => {
@@ -205,7 +198,7 @@
                                     <a href={`tel:${cvData.phone}`} className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition shadow-sm">
                                         <i className="fa-solid fa-phone"></i> Call {cvData.phone}
                                     </a>
-                                    <a href={`mailto:${cvData.email`} className="bg-white/10 hover:bg-white/20 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition backdrop-blur-sm border border-white/20">
+                                    <a href={`mailto:${cvData.email}`} className="bg-white/10 hover:bg-white/20 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition backdrop-blur-sm border border-white/20">
                                         <i className="fa-solid fa-envelope"></i> Send Email
                                     </a>
                                 </div>
@@ -245,8 +238,8 @@
                             className={`px-4 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 ${activeTab === 'experience' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                             <i className="fa-solid fa-briefcase"></i> Work History ({cvData.experience.length})
                         </button>
-                        <button 
-                            onClick={() => setActiveTab('skills')} 
+                        <button
+                            onClick={() => setActiveTab('skills')}
                             className={`px-4 py-2.5 rounded-lg text-xs font-bold transition flex items-center gap-2 ${activeTab === 'skills' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                             <i className="fa-solid fa-screwdriver-wrench"></i> Skills & Software
                         </button>
@@ -393,4 +386,99 @@
                                         {skills.map((skill, sIdx) => (
                                             <span key={sIdx} className="px-3 py-1.5 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 rounded-lg text-xs font-semibold transition border border-slate-200">
                                                 {skill}
-                                }]}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* TAB CONTENT: DESIGNED WEBSITES */}
+                    {activeTab === 'websites' && (
+                        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+                                <div>
+                                    <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                                        <i className="fa-solid fa-globe text-blue-600"></i> Designed & Managed Websites
+                                    </h2>
+                                    <p className="text-xs text-slate-500 mt-1">
+                                        Web development, UI design, and management projects created for personal ventures and clients.
+                                    </p>
+                                </div>
+                                <div className="flex gap-2">
+                                    <span className="px-2.5 py-1 bg-purple-50 text-purple-700 font-semibold rounded-md text-xs border border-purple-100">
+                                        2 Personal
+                                    </span>
+                                    <span className="px-2.5 py-1 bg-blue-50 text-blue-700 font-semibold rounded-md text-xs border border-blue-100">
+                                        6 Client Projects
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {cvData.portfolioWebsites.map((site, idx) => (
+                                    <div key={idx} className="bg-slate-50 hover:bg-slate-100/80 p-4 rounded-xl border border-slate-200/80 transition flex flex-col justify-between group">
+                                        <div>
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider ${site.type === 'Personal' ? 'bg-purple-100 text-purple-700 border border-purple-200' : 'bg-blue-100 text-blue-700 border border-blue-200'}`}>
+                                                    {site.type}
+                                                </span>
+                                                <i className="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-blue-600 transition text-xs"></i>
+                                            </div>
+                                            <h3 className="font-bold text-slate-800 text-sm group-hover:text-blue-600 transition flex items-center gap-2">
+                                                <i className="fa-solid fa-laptop-code text-slate-400 text-xs"></i>
+                                                {site.name}
+                                            </h3>
+                                            <p className="text-xs text-slate-500 mt-1">{site.category}</p>
+                                        </div>
+                                        <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between">
+                                            <span className="text-[11px] font-mono text-slate-500 truncate max-w-[180px] sm:max-w-[210px]">
+                                                {site.url.replace('https://', '').replace('http://', '').replace(/\/$/, '')}
+                                            </span>
+                                            <a 
+                                                href={site.url} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="px-3 py-1 bg-white hover:bg-blue-600 hover:text-white text-blue-600 font-semibold rounded-lg text-xs transition border border-slate-200 shadow-sm flex items-center gap-1.5"
+                                            >
+                                                Visit Site <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* TAB CONTENT: QR CODE SCANNER */}
+                    {activeTab === 'qrcode' && (
+                        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center max-w-md mx-auto">
+                            <h2 className="text-lg font-bold text-slate-800 mb-1">Scan Digital Resume</h2>
+                            <p className="text-xs text-slate-500 mb-6">Scan with any mobile camera to view Aziz Ullah Khan's live profile.</p>
+
+                            <div className="flex justify-center mb-6">
+                                <div className="p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-blue-200 inline-block shadow-inner">
+                                    <div ref={qrRef} className="flex justify-center"></div>
+                                </div>
+                            </div>
+
+                            <div className="bg-blue-50 p-3 rounded-xl border border-blue-100 text-xs text-blue-800 font-medium">
+                                <i className="fa-solid fa-circle-check text-blue-600 mr-1.5"></i>
+                                Ready for printed resumes, business cards, & direct recruitment sharing.
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Footer */}
+                    <footer className="mt-8 text-center text-xs text-slate-400 py-4">
+                        Aziz Ullah Khan • Professional CV & Service Interactive Portfolio • Abu Dhabi, UAE
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
