@@ -96,21 +96,21 @@
                   <div class="text-slate-500 mt-0.5">MOHRE work permits, ICP visas, TAMM, MOI & DAMAN</div>
                 </div>
               </div>
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-start gap-3">
                 <i class="fa-solid fa-receipt text-indigo-600 text-base mt-0.5"></i>
                 <div>
                   <div class="font-bold text-slate-800">Accounting & Bookkeeping</div>
                   <div class="text-slate-500 mt-0.5">QuickBooks, Techno Sys, ledger management & invoicing</div>
                 </div>
               </div>
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-start gap-3">
                 <i class="fa-solid fa-palette text-purple-600 text-base mt-0.5"></i>
                 <div>
                   <div class="font-bold text-slate-800">Graphics & Video Design</div>
                   <div class="text-slate-500 mt-0.5">Photoshop, Illustrator, After Effects, CorelDraw</div>
                 </div>
               </div>
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-start gap-3">
                 <i class="fa-solid fa-chart-line text-emerald-600 text-base mt-0.5"></i>
                 <div>
                   <div class="font-bold text-slate-800">Web & Digital Marketing</div>
@@ -303,7 +303,8 @@
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
       }
 
-      fetch('/data/cv.json')
+      // IMPORTANT: use relative path so Pages serves data from the repo path (gh-pages)
+      fetch('data/cv.json')
         .then(r => r.ok ? r.json() : Promise.reject('Failed to load data'))
         .then(data => {
           if (data && data.experience) renderExperience(data.experience);
