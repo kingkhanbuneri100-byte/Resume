@@ -1,160 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aziz Ullah Khan - Resume (Static)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body { background-color: #f8fbfb; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#0f172a; }
-    .subtle-bg { background-image: radial-gradient(rgba(6,182,212,0.02) 1px, transparent 1px); background-size: 18px 18px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aziz Ullah Khan - Interactive Resume & Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- React & React DOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- QRCode.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      /* subtle dotted background to match the provided image */
+      body.subtle-bg {
+        background-color: #f8fbfb; /* very light mint/white */
+        background-image: radial-gradient(rgba(6,182,212,0.02) 1px, transparent 1px);
+        background-size: 18px 18px;
+      }
+    </style>
 </head>
-<body class="subtle-bg min-h-screen">
-  <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6">
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-6 border border-slate-200">
-      <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-800 p-6 sm:p-8 text-white">
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white/30 overflow-hidden bg-slate-800 shadow-xl flex-shrink-0 flex items-center justify-center text-slate-400 relative">
-            <!-- animated logo if available at /assets/AT-Logo.gif -->
-            <img src="/assets/AT-Logo.gif" alt="Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#e2e8f0;font-size:40px;" aria-hidden>
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
-          </div>
+<body class="text-slate-800 font-sans min-h-screen subtle-bg">
+    <div id="root"></div>
 
-          <div class="text-center md:text-left flex-1">
-            <div class="inline-block bg-blue-500/30 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full mb-2 backdrop-blur-sm border border-blue-400/30">
-              Abu Dhabi, UAE • 10+ Years Experience
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">AZIZ ULLAH KHAN</h1>
-            <p class="text-blue-100 font-medium text-lg mt-1">Typing Specialist & Administrative Professional</p>
-            <p class="text-slate-300 text-sm mt-1 max-w-2xl">Government Portals (MOHRE, ICP, TAMM, MOI) | Accountant & Digital Designer</p>
-          </div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
 
-          <div class="flex flex-col gap-2 w-full md:w-auto">
-            <a href="tel:+971561794180" class="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition shadow-sm">
-              <i class="fa-solid fa-phone"></i> Call +971 56 179 4180
-            </a>
-            <a href="mailto:azizullahkhan6@outlook.com" class="bg-white/10 hover:bg-white/20 text-white font-medium px-4 py-2 rounded-lg text-xs flex items-center justify-center gap-2 transition backdrop-blur-sm border border-white/20">
-              <i class="fa-solid fa-envelope"></i> Send Email
-            </a>
-          </div>
-        </div>
-      </div>
+        const cvData = {
+            name: "AZIZ ULLAH KHAN",
+            age: 30,
+            title: "Typing Specialist & Administrative Professional",
+            subTitle: "Government Portals (MOHRE, ICP, TAMM, MOI) | Accountant & Digital Designer",
+            address: "Musaffah 38, Abu Dhabi, UAE",
+            phone: "+971 56 179 4180",
+            email: "azizullahkhan6@outlook.com",
+            education: [
+                {
+                    degree: "Bachelor of Computer Science (BSCS)",
+                    institution: "University of Swat",
+                    location: "Pakistan",
+                    year: "2018"
+                }
+            ],
+            languages: [
+                { name: "English", level: "Written & Spoken", badge: "Fluent" },
+                { name: "Urdu", level: "Written & Spoken", badge: "Native / Fluent" },
+                { name: "Pashto", level: "Written & Spoken", badge: "Native" },
+                { name: "Arabic", level: "Interested / Basic Learning", badge: "Beginner" }
+            ],
+            summary: "Typing Specialist and Administrative Professional with 10+ years of UAE and Pakistan experience in government portals (MOHRE, ICP, TAMM, MOI), financial recordkeeping, and digital design. Adept at handling complex government documentation, bookkeeping, website management, and office operations with speed and precision.",
+            experience: [
+                {
+                    company: "Blue Watch Transport & General Contracting",
+                    period: "01/08/2024 To Present",
+                    location: "Musaffah M17, Abu Dhabi, UAE",
+                    role: "Typist & Computer Operator",
+                    highlights: [
+                        "Managing end-to-end MOHRE work permits, labor applications, and quota approvals.",
+                        "Processing ICP (Immigration) visa entries, residency extensions, and Emirates ID applications.",
+                        "Executing TAMM & MOI government portal services for corporate vehicle and business permits.",
+                        "Directing general administrative workflow and client document processing."
+                    ]
+                },
+                {
+                    company: "Travels for Typing Services LLC",
+                    period: "02/07/2023 To 30/04/2024",
+                    location: "Musaffah M40, Abu Dhabi, UAE",
+                    role: "Typist & Computer Operator",
+                    highlights: [
+                        "Specialized in high-volume government visa typing across MOHRE and ICP systems.",
+                        "Ensured 100% compliance with UAE labor rules and document verification procedures.",
+                        "Handled customer inquiries, fine clearings, and TAMM smart service applications."
+                    ]
+                },
+                {
+                    company: "Al Zareena Cargo LLC",
+                    period: "01/07/2022 To 29/06/2023",
+                    location: "International City, Dubai, UAE",
+                    role: "Accountant & Online Marketing",
+                    highlights: [
+                        "Managed complete financial records, daily general ledger entries, and supplier balances.",
+                        "Generated client invoices, quotes, and prepared quarterly operating budgets.",
+                        "Created and managed corporate website, driving search engine optimization (SEO) and online leads."
+                    ]
+                },
+                {
+                    company: "SHAZZ Super Market",
+                    period: "01/2020 To 04/2022",
+                    location: "Karachi, Pakistan",
+                    role: "Accountant Officer",
+                    highlights: [
+                        "Oversaw Accounts Payable, daily cash reconciliations, and cheque payments.",
+                        "Maintained comprehensive vendor account ledgers and inventory valuation reports."
+                    ]
+                },
+                {
+                    company: "INFINITLY Peshawar LLC",
+                    period: "02/2018 To 03/2019",
+                    location: "Peshawar, Pakistan",
+                    role: "Graphics Designer & Video Animator",
+                    highlights: [
+                        "Designed visual identity materials, brand logos, promotional banners, and commercial print assets.",
+                        "Edited marketing video animations for client campaigns."
+                    ]
+                },
+                {
+                    company: "Stylish Photographer & Printing Press",
+                    period: "2013 To 2017",
+                    location: "Jowar, Buner, Pakistan",
+                    role: "Graphics Designer & Computer Operator",
+                    highlights: [
+                        "Operated commercial printing machinery and composed press layouts.",
+                        "Delivered photo editing, graphic composition, and administrative services."
+                    ]
+                }
+            ],
+            skillCategories: {
+                "Government Typing & Portals": ["MOHRE", "ICP (Immigration)", "TAMM Abu Dhabi", "MOI Services", "DAMAN Health Insurance"],
+                "Accounting & Software": ["QuickBooks", "Techno Sys", "Fourgen", "Microsoft Office (Excel/Word/PowerPoint)", "Financial Invoicing", "Budgeting"],
+                "Design & Media": ["Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "Adobe Premiere Pro", "CorelDraw", "AutoCAD"],
+                "Digital Marketing & Web": ["Website Management", "SEO (Search Engine Optimization)", "GEO & AEO", "Google Ads", "Facebook Ads"]
+            },
+            portfolioWebsites: [
+                { name: "Antique Echoes", url: "https://antiqueechoes.com/", type: "Personal", category: "E-Commerce / Antique Showcase & Blog" },
+                { name: "Chiller Van UAE", url: "http://chillervanuae.com/", type: "Personal", category: "Refrigerated Transport Services" },
+                { name: "Mover Star Express", url: "https://moverstarexpress.com/", type: "Client", category: "Relocation & Logistics Services" },
+                { name: "Global Chiller Van", url: "https://globalchillervan.com/", type: "Client", category: "Cold Storage & Transport Rental" },
+                { name: "Al Zareena Chiller Van (.ae)", url: "https://alzareenachillervan.ae/", type: "Client", category: "Logistics & Chiller Van UAE" },
+                { name: "Al Zareena Chiller Van (.com)", url: "https://alzareenachillervan.com/", type: "Client", category: "Cold Chain Logistics Services" },
+                { name: "Waseem Car Lift", url: "https://waseemcarleft.com/", type: "Client", category: "Passenger Transport & Car Lift" },
+                { name: "Blue Watch Groups", url: "https://bluewatchgroups.ae/", type: "Client", category: "Contracting & Group Corporate Services" }
+            ]
+        };
 
-      <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 bg-slate-50 border-t border-slate-100 text-xs font-medium text-slate-600">
-        <div class="p-3 text-center flex items-center justify-center gap-2">
-          <i class="fa-solid fa-location-dot text-blue-600 text-base"></i>
-          <span>Musaffah 38, Abu Dhabi, UAE</span>
-        </div>
-        <div class="p-3 text-center flex items-center justify-center gap-2">
-          <i class="fa-solid fa-graduation-cap text-indigo-600 text-base"></i>
-          <span>BS Computer Science (2018)</span>
-        </div>
-        <div class="p-3 text-center flex items-center justify-center gap-2">
-          <i class="fa-solid fa-language text-emerald-600 text-base"></i>
-          <span>English, Urdu, Pashto</span>
-        </div>
-        <div class="p-3 text-center flex items-center justify-center gap-2">
-          <i class="fa-solid fa-passport text-amber-600 text-base"></i>
-          <span>MOHRE / ICP Specialist</span>
-        </div>
-      </div>
-    </div>
+        function App() {
+            const [activeTab, setActiveTab] = useState('overview');
 
-    <!-- Navigation (non-interactive static) -->
-    <div class="flex flex-wrap gap-2 mb-6 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
-      <div class="px-4 py-2.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-sm flex items-center gap-2"><i class="fa-solid fa-address-card"></i> Profile Overview</div>
-      <div class="px-4 py-2.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 flex items-center gap-2"><i class="fa-solid fa-briefcase"></i> Work History (6)</div>
-      <div class="px-4 py-2.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 flex items-center gap-2"><i class="fa-solid fa-screwdriver-wrench"></i> Skills & Software</div>
-      <div class="px-4 py-2.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 flex items-center gap-2"><i class="fa-solid fa-globe"></i> Designed Websites (8)</div>
-      <div class="px-4 py-2.5 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-100 flex items-center gap-2"><i class="fa-solid fa-qrcode"></i> Scan QR Code</div>
-    </div>
+            const qrRef = useRef(null);
+            const [qrGenerated, setQrGenerated] = useState(false);
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="md:col-span-2 space-y-6">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h2 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="fa-solid fa-user-check text-blue-600"></i> Executive Summary</h2>
-          <p class="text-slate-600 text-sm leading-relaxed">Typing Specialist and Administrative Professional with 10+ years of UAE and Pakistan experience in government portals (MOHRE, ICP, TAMM, MOI), financial recordkeeping, and digital design. Adept at handling complex government documentation, bookkeeping, website management, and office operations with speed and precision.</p>
-        </div>
+            useEffect(() => {
+                if (activeTab === 'qrcode' && qrRef.current && !qrGenerated) {
+                    qrRef.current.innerHTML = "";
+                    new QRCode(qrRef.current, {
+                        text: window.location.href || "https://azizullahkhan.cv",
+                        width: 180,
+                        height: 180,
+                        colorDark: "#1e293b",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                    setQrGenerated(true);
+                }
+            }, [activeTab]);
 
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-star text-amber-500"></i> Key Competencies</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-medium">
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
-              <i class="fa-solid fa-building-columns text-blue-600 text-base mt-0.5"></i>
-              <div>
-                <div class="font-bold text-slate-800">UAE Government Portals</div>
-                <div class="text-slate-500 mt-0.5">MOHRE work permits, ICP visas, TAMM, MOI & DAMAN</div>
-              </div>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
-              <i class="fa-solid fa-receipt text-indigo-600 text-base mt-0.5"></i>
-              <div>
-                <div class="font-bold text-slate-800">Accounting & Bookkeeping</div>
-                <div class="text-slate-500 mt-0.5">QuickBooks, Techno Sys, ledger management & invoicing</div>
-              </div>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
-              <i class="fa-solid fa-palette text-purple-600 text-base mt-0.5"></i>
-              <div>
-                <div class="font-bold text-slate-800">Graphics & Video Design</div>
-                <div class="text-slate-500 mt-0.5">Photoshop, Illustrator, After Effects, CorelDraw</div>
-              </div>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
-              <i class="fa-solid fa-chart-line text-emerald-600 text-base mt-0.5"></i>
-              <div>
-                <div class="font-bold text-slate-800">Web & Digital Marketing</div>
-                <div class="text-slate-500 mt-0.5">Website administration, SEO optimization, Ads campaigns</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            const handleAddTransaction = (e) => {
+                e.preventDefault();
+                // removed calculator helper to avoid undefined references
+                return;
+            };
 
-      <div class="space-y-6">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h2 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-blue-600"></i> Education</h2>
-          <div class="border-l-2 border-blue-600 pl-3 py-1">
-            <div class="font-bold text-sm text-slate-800">Bachelor of Computer Science (BSCS)</div>
-            <div class="text-xs text-slate-600">University of Swat, Pakistan</div>
-            <div class="text-xs text-blue-600 font-semibold mt-1">2018</div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h2 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="fa-solid fa-language text-emerald-600"></i> Languages</h2>
-          <div class="space-y-2">
-            <div class="flex justify-between items-center text-xs p-2 bg-slate-50 rounded-lg">
-              <div>
-                <span class="font-bold text-slate-800">English</span>
-                <span class="text-slate-400 text-[10px] block">Written & Spoken</span>
-              </div>
-              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 font-semibold rounded text-[10px]">Fluent</span>
-            </div>
-            <div class="flex justify-between items-center text-xs p-2 bg-slate-50 rounded-lg">
-              <div>
-                <span class="font-bold text-slate-800">Urdu</span>
-                <span class="text-slate-400 text-[10px] block">Written & Spoken</span>
-              </div>
-              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 font-semibold rounded text-[10px]">Native / Fluent</span>
-            </div>
-            <div class="flex justify-between items-center text-xs p-2 bg-slate-50 rounded-lg">
-              <div>
-                <span class="font-bold text-slate-800">Pashto</span>
-                <span class="text-slate-400 text-[10px] block">Written & Spoken</span>
-              </div>
-              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 font-semibold rounded text-[10px]">Native</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="mt-8 text-center text-xs text-slate-400 py-4">Aziz Ullah Khan • Professional CV & Service Interactive Portfolio • Abu Dhabi, UAE</footer>
-  </div>
-</body>
-</html>
+            return (
+                <div className="max-w-5xl mx-auto py-8 px-4 sm:px-6">
+                    {/* Header / Hero Card */}
+                    <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-6 border border-slate-200">
+                        <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-800 p-6 sm:p-8 text-white">
+                            <div className="flex flex-col md:flex-row items-center gap-6">
+                                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white/30 overflow-hidden bg-slate-800 shadow-xl flex-shrink-0 flex items-center justify-cent[...]
