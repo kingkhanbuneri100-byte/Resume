@@ -163,36 +163,8 @@
     <section id="tab-experience" class="tab-section hidden">
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-6">
         <h2 class="text-lg font-bold text-slate-800 mb-4"><i class="fa-solid fa-clock-rotate-left text-blue-600 mr-2"></i> Professional Work History</h2>
-        <div class="space-y-6">
-          <div>
-            <h3 class="font-bold">Typist & Computer Operator — Blue Watch Transport & General Contracting</h3>
-            <div class="text-xs text-slate-500">01/08/2024 To Present — Musaffah M17, Abu Dhabi, UAE</div>
-            <ul class="mt-2 text-sm list-disc list-inside text-slate-600">
-              <li>Managing end-to-end MOHRE work permits, labor applications, and quota approvals.</li>
-              <li>Processing ICP visa entries, residency extensions, and Emirates ID applications.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-bold">Typist & Computer Operator — Travels for Typing Services LLC</h3>
-            <div class="text-xs text-slate-500">02/07/2023 To 30/04/2024 — Musaffah M40, Abu Dhabi, UAE</div>
-            <ul class="mt-2 text-sm list-disc list-inside text-slate-600">
-              <li>Specialized in high-volume government visa typing across MOHRE and ICP systems.</li>
-              <li>Ensured compliance with UAE labor rules and document verification procedures.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-bold">Accountant & Online Marketing — Al Zareena Cargo LLC</h3>
-            <div class="text-xs text-slate-500">01/07/2022 To 29/06/2023 — International City, Dubai, UAE</div>
-            <ul class="mt-2 text-sm list-disc list-inside text-slate-600">
-              <li>Managed financial records, ledger entries, and supplier balances.</li>
-              <li>Created and managed corporate website and SEO initiatives.</li>
-            </ul>
-          </div>
-
-          <!-- Add remaining experiences as needed -->
-        </div>
+        <!-- Experience timeline will be injected here -->
+        <div id="experience-list"></div>
       </div>
     </section>
 
@@ -289,6 +261,56 @@
       }
 
       buttons.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+
+      // Load data and render experience timeline
+      function renderExperience(experience) {
+        const list = document.getElementById('experience-list');
+        if (!list) return;
+        list.innerHTML = '';
+
+        const timeline = document.createElement('div');
+        timeline.className = 'relative border-l-2 border-slate-200 ml-4 space-y-8';
+
+        experience.forEach((exp) => {
+          const item = document.createElement('div');
+          item.className = 'relative pl-6 group';
+
+          item.innerHTML = `
+            <div class="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+              <h3 class="font-bold text-base text-slate-800">${escapeHtml(exp.role)}</h3>
+              <span class="text-xs font-semibold px-2.5 py-1 bg-blue-50 text-blue-700 rounded-md border border-blue-100 w-fit">${escapeHtml(exp.period)}</span>
+            </div>
+            <div class="text-xs font-semibold text-slate-600 mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-building text-slate-400"></i> ${escapeHtml(exp.company)}
+              <span class="text-slate-300">•</span>
+              <i class="fa-solid fa-location-dot text-slate-400"></i> ${escapeHtml(exp.location)}
+            </div>
+            <ul class="space-y-1.5 text-xs text-slate-600 list-disc list-inside bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+              ${exp.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+            </ul>
+          `;
+
+          timeline.appendChild(item);
+        });
+
+        list.appendChild(timeline);
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+      }
+
+      fetch('/data/cv.json')
+        .then(r => r.ok ? r.json() : Promise.reject('Failed to load data'))
+        .then(data => {
+          if (data && data.experience) renderExperience(data.experience);
+          // optionally render other sections later
+        })
+        .catch(err => {
+          console.error('Could not load CV JSON:', err);
+        });
 
       // default
       activate('overview');
