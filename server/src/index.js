@@ -1,3 +1,6 @@
+const clientDist = path.join(__dirname, '..', '..', 'client', 'dist')
+
+// previous line adjusted to account for repo layout where client/ is at project root
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
@@ -43,7 +46,7 @@ app.post('/api/contact', (req, res) => {
 })
 
 // serve client build when exists
-const clientDist = path.join(__dirname, '..', 'client', 'dist')
+
 if(fs.existsSync(clientDist)){
   app.use(express.static(clientDist))
   app.get('*', (req, res) => {
